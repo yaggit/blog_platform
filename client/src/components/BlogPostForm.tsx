@@ -11,8 +11,9 @@ interface Props {
 
 const validationSchema = Yup.object({
   content: Yup.string()
-    .matches(/^[a-zA-Z0-9\s.,!]*$/, 'Only letters, numbers, spaces, periods, commas, and exclamation marks are allowed.')
-    .required('Content is required'),
+    .matches(/^[a-zA-Z0-9\s.,!"?']*$/, 'Only letters, numbers, spaces, periods, commas, quotes and exclamation marks are allowed.')
+    .required('Content is required.')
+    .max(2000, 'Content must be at most 2000 characters long.')
 });
 
 const BlogPostForm: React.FC<Props> = ({ onPostCreated, onClose }) => {
