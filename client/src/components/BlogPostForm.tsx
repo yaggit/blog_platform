@@ -40,7 +40,7 @@ const BlogPostForm: React.FC<Props> = ({ onPostCreated, onClose }) => {
       {({ isSubmitting }) => (
         <Form className="space-y-4">
           <h2 className="text-2xl font-bold mb-4 text-purple-600">Share Your Thoughts</h2>
-          <p>p.s. it will be deleted within 24 hours</p>
+          {/* <p>p.s. it will be deleted within 24 hours</p> */}
           <div>
             <Field
               as="textarea"

@@ -5,6 +5,12 @@ import { adminAuth } from '../middleware/auth';
 
 const router = express.Router();
 
+// Check Status
+
+router.get('/status', (req, res) => {
+  res.status(200).json({ message: 'Up and Running!' });
+});
+
 // Public routes
 router.get('/question', questionController.getCurrentQuestion);
 router.get('/posts', blogController.getAllPosts);
