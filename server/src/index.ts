@@ -3,6 +3,7 @@ import cors from 'cors';
 import routes from './routes/blogRoutes';
 import sequelize from './utils/db';
 import { QuestionService } from './services/questionService';
+import http from 'http';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -16,6 +17,17 @@ app.use((err: Error, req: express.Request, res: express.Response, next: express.
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
+
+function pingServer() {
+  http.get(`http://blog-platform-1fm4.onrender.com/`, (res) => {
+    console.log(`Pinged server. Status code: ${res.statusCode}`);
+  }).on('error', (err) => {
+    console.error(`Error pinging server: ${err.message}`);
+  });
+}
+
+// Ping server
+setInterval(pingServer, 5 * 60 * 1000);
 
 sequelize.sync().then(() => {
   console.log('Database synced');
