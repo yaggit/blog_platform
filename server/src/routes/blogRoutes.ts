@@ -6,9 +6,8 @@ import { adminAuth } from '../middleware/auth';
 const router = express.Router();
 
 // Check Status
-
 router.get('/status', (req, res) => {
-  res.status(200).json({ message: 'Up and Running!' });
+  res.status(200).send('OK');
 });
 
 // Public routes
